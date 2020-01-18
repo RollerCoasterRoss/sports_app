@@ -1,0 +1,9 @@
+@sports.map do |sport_team|
+            {
+              id: sport_team.id,
+              team: sport_team.team,
+              city: sport_team.city,
+              fanbase_loyalty: sport_team.fanbase_loyalty,
+              market_size: sport_team.market_size
+            }
+            end

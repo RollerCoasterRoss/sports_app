@@ -1,0 +1,7 @@
+{
+  id: @sport.id,
+  team: @sport.team,
+  city: @sport.city,
+  fanbase_loyalty: @sport.fanbase_loyalty,
+  market_size: @sport.market_size
+}
