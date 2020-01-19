@@ -1,23 +1,25 @@
 require 'http'
 
 while true
-  puts "=+" * 25
+  puts "+" * 40
   puts "Type 0 (NUMBER) to exit program."
   puts "Type 1 to display all teams."
   puts "Type 2 to filter by city."
   puts "Type 3 to display most loyal and disloyal fanbases."
-  puts "=+" * 25
+  puts "+" * 40
   user_input = gets.chomp
 
   if user_input == "0"
-    puts "=+" * 25
     puts "Exiting Program!"
     break
   elsif user_input == "1"
     response = HTTP.get("http://localhost:3000/api/sports")
     retrieve_all_teams = response.parse(@sports)
-    puts "=+" * 25
-    puts retrieve_all_teams
+
+    retrieve_all_teams.each do |team|
+      puts "-" * 40
+      pp team
+    end
   elsif user_input == "2"
     puts "Please enter a city to filter by:"
     city_input = gets.chomp
@@ -27,15 +29,15 @@ while true
 
     retrieve_team_by_city.each do |team|
       if team["city"] == "#{city_input}"
-        puts "=+" * 25
-        puts team
+        puts "-" * 40
+        pp team
       end
     end
 
   elsif user_input == "3"
-    puts "=+" * 25
+    puts "+" * 40
     puts "Type 1 for loyal fanbases and 2 for disloyal fanbases"
-    puts "=+" * 25
+    puts "+" * 40
     fanabase_response = gets.chomp
 
     response = HTTP.get("http://localhost:3000/api/sports")
@@ -62,7 +64,6 @@ while true
         puts final_arr_2
       end
   else
-    puts "=+" * 25
     puts "Unexpected Input! Exiting..."
     break
   end
